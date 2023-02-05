@@ -11,6 +11,7 @@ const useMealById = () => {
     area: "",
     thumbnail: "",
     instructions: "",
+    youtube: ""
   });
   const [ingridients, setIngridients] = useState([]);
   const [isLoading, setLoading] = useState(false);
@@ -41,6 +42,7 @@ const useMealById = () => {
         area: data.strArea,
         thumbnail: data.strMealThumb,
         instructions: data.strInstructions,
+        youtube: data.strYoutube
       });
       setIngridients(ingridientArr.filter(el => el.ingridient !== "" && el.ingridient !== null));
 
