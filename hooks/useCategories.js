@@ -8,10 +8,7 @@ const useCategories = () => {
   const getCategories = async () => {
     try {
       setLoading(true);
-      const result = await axios.get(
-        "https://www.themealdb.com/api/json/v1/1/categories.php"
-      );
-      console.log(result.data);
+      const result = await axios.get("https://www.themealdb.com/api/json/v1/1/categories.php");
       setCategories(result.data.categories);
     } catch (error) {
       console.error(error);
