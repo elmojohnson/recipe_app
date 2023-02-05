@@ -5,7 +5,7 @@ const Layout = ({children}) => {
   return (
     <div>
       <Navbar />
-      <main>{children}</main>
+      <main className="wrapper py-4">{children}</main>
     </div>
   )
 }
