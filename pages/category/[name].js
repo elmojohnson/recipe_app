@@ -1,19 +1,30 @@
 import React from "react";
-import Layout from "@/components/layouts/Layout";
 import useCategoryByName from "@/hooks/useCategoryByName";
+
+import Layout from "@/components/layouts/Layout";
+import GridWrapper from "@/components/utils/GridWrapper";
+import MealItem from "@/components/items/MealItem";
 
 const Category = () => {
   const { meals, isLoading } = useCategoryByName();
+
   return (
     <Layout>
       {isLoading ? (
         <p>Loading</p>
       ) : (
-        <div>
+        <GridWrapper>
           {meals.map((meal) => {
-            return <p key={meal.idMeal}>{meal.strMeal}</p>;
+            return (
+              <MealItem
+                key={meal.idMeal}
+                id={meal.idMeal}
+                meal={meal.strMeal}
+                thumbnail={meal.strMealThumb}
+              />
+            );
           })}
-        </div>
+        </GridWrapper>
       )}
     </Layout>
   );

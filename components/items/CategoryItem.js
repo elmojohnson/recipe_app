@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Card from "../utils/Card";
 
 const CategoryItem = ({ category, description, thumbnail }) => {
   return (
     <Link href={`/category/${category}`}>
-      <div className="bg-white shadow rounded-xl overflow-hidden flex flex-col items-center h-full hover:shadow-xl">
+      <Card>
         <Image
           src={thumbnail}
           alt={category}
@@ -20,7 +21,7 @@ const CategoryItem = ({ category, description, thumbnail }) => {
           <h3 className="font-bold text-xl">{category}</h3>
           <p className="line-clamp-3">{description}</p>
         </div>
-      </div>
+      </Card>
     </Link>
   );
 };
