@@ -12,6 +12,7 @@ const useMealById = () => {
     thumbnail: "",
     instructions: "",
   });
+  const [ingridients, setIngridients] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
   const getMeal = async () => {
@@ -22,7 +23,17 @@ const useMealById = () => {
           router.query.id
       );
       const data = result.data.meals[0];
+      let ingridientArr = [];
 
+      // Ingridients with measures
+      for(let i = 0; i < 20; i++) {
+        ingridientArr.push({
+          ingridient: data[`strIngredient${i + 1}`],
+          measure: data[`strMeasure${i + 1}`]
+        });
+      }
+
+      // Set data
       setMeal({
         id: data.idMeal,
         meal: data.strMeal,
@@ -31,6 +42,8 @@ const useMealById = () => {
         thumbnail: data.strMealThumb,
         instructions: data.strInstructions,
       });
+      setIngridients(ingridientArr.filter(el => el.ingridient !== ""))
+
     } catch (error) {
       console.error(error);
     } finally {
@@ -42,7 +55,7 @@ const useMealById = () => {
     router.isReady && getMeal();
   }, [router]);
 
-  return { meal, isLoading };
+  return { meal, ingridients, isLoading };
 };
 
 export default useMealById;
