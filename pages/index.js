@@ -12,6 +12,7 @@ const Home = () => {
   const { categories, isLoading } = useCategories();
   return (
     <Layout>
+      <h1 className="font-bold text-2xl mb-4">Categories</h1>
       <AnimatePresence>
         {isLoading ? (
           <GridWrapper>
