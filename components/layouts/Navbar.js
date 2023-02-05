@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="wrapper flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <MdFastfood className="text-3xl" />
-          <h1 className="text-2xl font-bold">Good Foods</h1>
+          <h1 className="text-2xl font-bold md:block hidden">Good Foods</h1>
         </div>
         <Search />
       </div>
