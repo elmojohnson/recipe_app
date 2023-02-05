@@ -5,7 +5,7 @@ import Search from "../forms/Search";
 
 const Navbar = () => {
   return (
-    <div className="bg-primary py-3 text-white shadow">
+    <div className="bg-primary py-3 text-white shadow sticky top-0 z-50">
       <div className="wrapper flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <MdFastfood className="text-3xl" />
