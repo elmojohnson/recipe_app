@@ -42,7 +42,8 @@ const useMealById = () => {
         thumbnail: data.strMealThumb,
         instructions: data.strInstructions,
       });
-      setIngridients(ingridientArr.filter(el => el.ingridient !== ""))
+      setIngridients(ingridientArr.filter(el => el.ingridient !== "" && el.ingridient !== null));
+
 
     } catch (error) {
       console.error(error);
