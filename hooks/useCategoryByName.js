@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const useCategoryByName = () => {
   const router = useRouter();
+
+  const mealName = router.query.name;
   const [meals, setMeals] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
@@ -11,9 +13,7 @@ const useCategoryByName = () => {
     try {
       setLoading(true);
       const result = await axios.get(
-        "https://www.themealdb.com/api/json/v1/1/filter.php?c=" +
-          router.query.name
-      );
+        "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + mealName);
       setMeals(result.data.meals);
     } catch (error) {
       console.error(error);
@@ -27,7 +27,7 @@ const useCategoryByName = () => {
     router.isReady && getCategory();
   }, [router]);
 
-  return { meals, isLoading };
+  return { mealName, meals, isLoading };
 };
 
 export default useCategoryByName;
