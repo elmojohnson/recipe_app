@@ -8,13 +8,22 @@ const Meal = () => {
   const { meal, ingridients, isLoading } = useMealById();
   return (
     <div>
+      {meal.thumbnail && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="h-64 w-full absolute bg-center bg-no-repeat bg-cover top-0 right-0 brightness-50 lg:block hidden"
+          style={{ backgroundImage: `url(${meal.thumbnail})` }}
+        />
+      )}
       <AnimatePresence>
         {isLoading ? (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 1 }}
             className="h-24 w-full flex items-center justify-center"
           >
             <CgSpinner className="animate-spin text-primary text-3xl" />
@@ -24,10 +33,13 @@ const Meal = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 1 }}
             className="bg-white rounded-xl p-6 shadow flex lg:flex-row flex-col lg:items-start items-center lg:space-y-0 space-y-3 overflow-hidden relative"
           >
-            <div className="bg-primary h-44 w-full absolute top-0 right-0 lg:hidden block" />
+            <div
+              className="h-44 w-full absolute bg-center bg-no-repeat bg-cover top-0 right-0 lg:hidden block brightness-50"
+              style={{ backgroundImage: `url(${meal.thumbnail})` }}
+            />
             {meal.thumbnail && (
               <Image
                 src={meal.thumbnail}
@@ -40,7 +52,7 @@ const Meal = () => {
             )}
             <div className="w-full flex flex-col lg:items-start items-center space-y-8 lg:ml-6 ml-0">
               <div className="lg:text-start text-center w-full">
-                <h1 className="font-bold text-3xl">{meal.meal}</h1>
+                <h1 className="font-bold text-4xl">{meal.meal}</h1>
                 <label className="text-muted">
                   {meal.category}, {meal.area}
                 </label>
