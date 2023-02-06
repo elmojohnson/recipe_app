@@ -6,6 +6,7 @@ const useSearchByQuery = () => {
   const router = useRouter();
   const [meals, setMeals] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const [isFound, setFound] = useState(true);
 
   const getSearchResult = async (query) => {
     try {
@@ -17,6 +18,9 @@ const useSearchByQuery = () => {
 
       if (result.data.meals !== null) {
         setMeals(result.data.meals);
+        setFound(true);
+      } else {
+        setFound(false);
       }
     } catch (error) {
       console.error(error);
@@ -42,7 +46,7 @@ const useSearchByQuery = () => {
     }
   }, [router]);
 
-  return { meals, isLoading };
+  return { meals, isLoading, isFound };
 };
 
 export default useSearchByQuery;

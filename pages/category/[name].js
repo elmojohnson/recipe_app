@@ -10,7 +10,7 @@ const Category = () => {
   return (
     <Layout>
       <h1 className="font-bold text-2xl mb-4">{mealName}</h1>
-      <MealList meals={meals} isLoading={isLoading} />
+      <MealList meals={meals} isLoading={isLoading} isFound={true} />
     </Layout>
   );
 };
