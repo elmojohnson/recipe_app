@@ -1,5 +1,4 @@
 import React from "react";
-import Layout from "@/components/layouts/Layout";
 import useMealById from "@/hooks/useMealById";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,7 +7,7 @@ import { CgSpinner } from "react-icons/cg";
 const Meal = () => {
   const { meal, ingridients, isLoading } = useMealById();
   return (
-    <Layout>
+    <div>
       <AnimatePresence>
         {isLoading ? (
           <motion.div
@@ -69,7 +68,7 @@ const Meal = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </Layout>
+    </div>
   );
 };
 

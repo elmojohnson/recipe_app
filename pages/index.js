@@ -1,6 +1,5 @@
 import useCategories from "@/hooks/useCategories";
 
-import Layout from "@/components/layouts/Layout";
 import GridWrapper from "@/components/utils/GridWrapper";
 
 import CategoryItem from "@/components/items/CategoryItem";
@@ -11,7 +10,7 @@ import { AnimatePresence } from "framer-motion";
 const Home = () => {
   const { categories, isLoading } = useCategories();
   return (
-    <Layout>
+    <div>
       <h1 className="font-bold text-2xl mb-4">Categories</h1>
       <AnimatePresence>
         {isLoading ? (
@@ -35,7 +34,7 @@ const Home = () => {
           </GridWrapper>
         )}
       </AnimatePresence>
-    </Layout>
+    </div>
   );
 };
 
