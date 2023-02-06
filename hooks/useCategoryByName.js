@@ -12,12 +12,10 @@ const useCategoryByName = () => {
   const getCategory = async () => {
     try {
       setLoading(true);
-      const result = await axios.get(
-        "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + mealName);
+      const result = await axios.get("https://www.themealdb.com/api/json/v1/1/filter.php?c=" + mealName);
       setMeals(result.data.meals);
     } catch (error) {
       console.error(error);
-      router.push("/");
     } finally {
       setLoading(false);
     }
