@@ -1,8 +1,14 @@
+import Layout from '@/components/layouts/Layout'
+import MealList from '@/components/lists/MealList';
+import useSearchByQuery from '@/hooks/useSearchByQuery'
 import React from 'react'
 
 const Search = () => {
+    const {meals, isLoading} = useSearchByQuery();
   return (
-    <div>Search</div>
+    <Layout>
+        <MealList meals={meals} isLoading={isLoading} />
+    </Layout>
   )
 }
 
